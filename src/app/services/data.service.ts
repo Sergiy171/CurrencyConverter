@@ -23,7 +23,11 @@ export class DataService {
   //   return 1;
   // }
 
-  getConvertedValue(currencyFromValue: number, currencyToRate: number): number {
+  getConvertedBaseValue(currencyFromValue: number, currencyToRate: number): number {
+    return currencyFromValue / currencyToRate;
+  }
+
+  getConvertedResultValue(currencyFromValue: number, currencyToRate: number): number {
     // let currencyToRate: number = this.getConvertedCurrencyRate
 
     return currencyFromValue * currencyToRate;
