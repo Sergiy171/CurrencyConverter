@@ -1,10 +1,18 @@
 <div class="currency base-currency">
-    <span class="currency-label">UAH: </span>
-    <span class="currency-value">{{ apiResult.uah.uah }}</span>
+    <span class="currency-label">{{ selectedCurrency }}: </span>
+    <span class="currency-value">{{ apiResult[selectedCurrency][selectedCurrency] }}</span>
 </div>
 <div class="currency">
     <span class="currency-label">EUR: </span>
-    <span class="currency-value">{{ apiResult.uah.eur }}</span>
+    <span class="currency-value">{{ apiResult[selectedCurrency].eur }}</span>
+</div>
+<div class="currency">
+    <span class="currency-label">USD: </span>
+    <span class="currency-value">{{ apiResult[selectedCurrency].usd }}</span>
+</div>
+<div class="currency">
+    <span class="currency-label">PLN: </span>
+    <span class="currency-value">{{ apiResult[selectedCurrency].pln }}</span>
 </div>
 
 <div class="display-results" *ngIf="apiResult" hidden>

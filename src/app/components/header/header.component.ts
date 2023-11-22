@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { Currency } from 'src/app/shared/enums/currency';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +13,12 @@ export class HeaderComponent implements OnInit {
 
   apiResult: any;
 
+  selectedCurrency: Currency = Currency.UAH;
+
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.dataService.getCurrenciesRate().subscribe((data: any) => {
+    this.dataService.getCurrenciesRate(this.selectedCurrency).subscribe((data: any) => {
       this.apiResult = data;
     });
   }
