@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Currency } from './shared/enums/currency';
 import { DataService } from './services/data.service';
 
@@ -7,7 +7,7 @@ import { DataService } from './services/data.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'CurrencyConverter';
   
   selectedCurrency: Currency = Currency.UAH;

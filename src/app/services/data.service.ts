@@ -9,9 +9,23 @@ import { Currency } from '../shared/enums/currency';
 export class DataService {
   constructor(private httpClient: HttpClient) { }
 
-  public getCurrenciesRate(currency: Currency): Observable<any> {
+  getCurrenciesRate(currency: Currency): Observable<any> {
     let CURRENCIES_API = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`;
 
     return this.httpClient.get(CURRENCIES_API);
+  }
+
+  // getConvertedCurrencyRate(currencyRates: any, currencyFrom: Currency, currencyTo: Currency): number {
+  //   return 1;
+  // }
+
+  // getConvertedValue(currencyRates: any, currencyFrom: Currency, currencyTo: Currency, currencyFromValue: number): number {
+  //   return 1;
+  // }
+
+  getConvertedValue(currencyFromValue: number, currencyToRate: number): number {
+    // let currencyToRate: number = this.getConvertedCurrencyRate
+
+    return currencyFromValue * currencyToRate;
   }
 }

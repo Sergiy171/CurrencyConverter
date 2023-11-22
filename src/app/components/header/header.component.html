@@ -1,16 +1,15 @@
 <div class="currency base-currency">
-    <span class="currency-label">{{ selectedCurrency }}: </span>
-    <span class="currency-value">{{ apiResult[selectedCurrency][selectedCurrency] }}</span>
+    <span class="currency-label">Selected currency: {{ selectedCurrency | uppercase }} </span>
 </div>
 <div class="currency">
     <span class="currency-label">EUR: </span>
-    <span class="currency-value">{{ apiResult[selectedCurrency].eur }}</span>
+    <span class="currency-value">{{ (1 / apiResult[selectedCurrency].eur) | number: '1.0-2' }}</span>
 </div>
 <div class="currency">
     <span class="currency-label">USD: </span>
-    <span class="currency-value">{{ apiResult[selectedCurrency].usd }}</span>
+    <span class="currency-value">{{ (1 / apiResult[selectedCurrency].usd) | number: '1.0-2' }}</span>
 </div>
 <div class="currency">
     <span class="currency-label">PLN: </span>
-    <span class="currency-value">{{ apiResult[selectedCurrency].pln }}</span>
+    <span class="currency-value">{{ (1 / apiResult[selectedCurrency].pln) | number: '1.0-2' }}</span>
 </div>
