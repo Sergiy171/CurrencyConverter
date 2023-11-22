@@ -1,1 +1,4 @@
-<p>conversion works!</p>
+<div class="display-results" *ngIf="apiResult" hidden>
+    <h4>Results from API</h4>
+    <div>{{ apiResult | json }}</div>
+</div>

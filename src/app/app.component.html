@@ -1,4 +1,4 @@
 <router-outlet></router-outlet>
 
-<app-header></app-header>
-<app-conversion></app-conversion>
+<app-header *ngIf="apiResult" [selectedCurrency]="selectedCurrency" [apiResult]="apiResult"></app-header>
+<app-conversion *ngIf="apiResult" [selectedInitialCurrency]="selectedCurrency" [apiResult]="apiResult"></app-conversion>
