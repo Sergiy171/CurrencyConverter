@@ -1,1 +1,7 @@
-<p>header works!</p>
+<span class="currency">{{ currency }}</span>
+<span class="value">{{ value }}</span>
+
+<div class="display-results" *ngIf="apiResult">
+    <h4>Results from API</h4>
+    <div>{{ apiResult | json }}</div>
+</div>
