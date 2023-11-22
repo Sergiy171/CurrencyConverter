@@ -1,6 +1,15 @@
-.currency {
+header {
+    display: flex;
+
+    .currency {
+        margin: 5px 10px;
+
+        &.base-currency {
+            margin-right: 15px;
+        }
     
-    .currency-label {
-        font-weight: 600;
+        .currency-label {
+            font-weight: 600;
+        }
     }
 }
