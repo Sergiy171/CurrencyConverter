@@ -15,21 +15,11 @@ export class DataService {
     return this.httpClient.get(CURRENCIES_API);
   }
 
-  // getConvertedCurrencyRate(currencyRates: any, currencyFrom: Currency, currencyTo: Currency): number {
-  //   return 1;
-  // }
-
-  // getConvertedValue(currencyRates: any, currencyFrom: Currency, currencyTo: Currency, currencyFromValue: number): number {
-  //   return 1;
-  // }
-
   getConvertedBaseValue(currencyFromValue: number, currencyToRate: number): number {
     return currencyFromValue / currencyToRate;
   }
 
   getConvertedResultValue(currencyFromValue: number, currencyToRate: number): number {
-    // let currencyToRate: number = this.getConvertedCurrencyRate
-
     return currencyFromValue * currencyToRate;
   }
 }

@@ -1,18 +1,17 @@
 <div class="container">
     <div class="">
         <input name="baseCurrencyValue" type="number"
-            [ngModel]="baseCurrencyValue | number: '1.0-2'"
+            [ngModel]="baseCurrencyValue"
             (ngModelChange)="onBaseCurrencyValueChange($event)">
-        <!-- <input name="baseCurrencyValue" type="number" [(ngModel)]="baseCurrencyValue"> -->
-        <!-- <select name="baseCurrency"></select> -->
-        <select name="baseCurrency">
-            <option *ngFor="let curr of currencies" [value]="baseCurrency">{{ curr | uppercase }}</option>
+        <select name="baseCurrency" [(ngModel)]="baseCurrency" (change)="onBaseCurrencyChange($event)">
+            <option *ngFor="let curr of currencies" [value]="curr">{{ curr | uppercase }}</option>
         </select>
     </div>
     <div class="">
-        <input name="currencyValue" type="number" [ngModel]="resultCurrencyValue | number: '1.0-2'">
-        <select name="currency" (change)="onCurrencyChange()" [(ngModel)]="resultCurrency">
-        <!-- <select name="currency" (ngModelChange)="onCurrencyValueChange($event)"> -->
+        <input name="resultCurrencyValue" type="number"
+            [ngModel]="resultCurrencyValue"
+            (ngModelChange)="onResultCurrencyValueChange($event)">
+        <select name="resultCurrency" [(ngModel)]="resultCurrency" (change)="onResultCurrencyChange()">
             <option *ngFor="let curr of currencies" [value]="curr">{{ curr | uppercase }}</option>
         </select>
     </div>

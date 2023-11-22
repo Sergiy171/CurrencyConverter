@@ -11,8 +11,6 @@ export class ConversionComponent implements OnInit {
   @Input() apiResult: any;
   @Input() selectedInitialCurrency: Currency = Currency.UAH;
 
-  // currencies: Currency[] = [Currency.UAH, Currency.EUR, Currency.USD, Currency.PLN];
-  // currencies = Currency;
   currencies = Object.values(Currency);
 
   selectedBaseCurrency: Currency = Currency.UAH;
@@ -22,47 +20,36 @@ export class ConversionComponent implements OnInit {
   baseCurrencyValue: number = 1;
   resultCurrency: Currency = Currency.EUR;
   resultCurrencyValue: number = 1;
-  // currencyValue: number;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.resultCurrencyValue = this.dataService.getConvertedResultValue(this.baseCurrencyValue, this.getConvertedCurrencyRate());
-    // this.currencyValue = this.dataService.getConvertedValue(this.apiResult[this.selectedInitialCurrency], this.selectedInitialCurrency, this.selectedCurrency, this.baseCurrencyValue);
   }
 
-  // onBaseCurrencyChange(): void {
-
-  // }
-
-  onBaseCurrencyValueChange(event: any): void {
-    this.baseCurrencyValue = event;
-    // this.applyBaseCurrencyValueChange();
+  onBaseCurrencyChange(event: any): void {
     this.resultCurrencyValue = this.dataService.getConvertedResultValue(this.baseCurrencyValue, this.getConvertedCurrencyRate());
   }
 
-  onCurrencyChange(): void {
+  onBaseCurrencyValueChange(event: any): void {
+    this.baseCurrencyValue = event;
+    this.resultCurrencyValue = this.dataService.getConvertedResultValue(this.baseCurrencyValue, this.getConvertedCurrencyRate());
+  }
+
+  onResultCurrencyChange(): void {
     this.baseCurrencyValue = this.dataService.getConvertedBaseValue(this.resultCurrencyValue, this.getConvertedCurrencyRate());
   }
 
-  // onCurrencyValueChange(event: any): void {
-  //   this.currencyValue = event;
-  //   // this.applyCurrencyValueChange();
-  // }
-
-  private getConvertedCurrencyRate(): number {
-    return this.apiResult[this.selectedInitialCurrency][this.resultCurrency];
+  onResultCurrencyValueChange(event: any): void {
+    this.resultCurrencyValue = event;
+    this.baseCurrencyValue = this.dataService.getConvertedBaseValue(this.resultCurrencyValue, this.getConvertedCurrencyRate());
   }
 
-  // private applyBaseCurrencyValueChange() {
-  //   this.currencyValue = this.dataService.getConvertedValue(this.baseCurrencyValue, this.getConvertedCurrencyRate());
-  // }
+  private getConvertedCurrencyRate(): number {
+    if (this.baseCurrency !== this.selectedInitialCurrency) {
+      return this.apiResult[this.selectedInitialCurrency][this.resultCurrency] / this.apiResult[this.selectedInitialCurrency][this.baseCurrency];
+    }
 
-  // private applyCurrencyValueChange() {
-  //   this.currencyValue = this.currencyValue / this.dataService.getConvertedValue(this.baseCurrencyValue, this.getConvertedCurrencyRate());
-  // }
-
-  // private applyCurrencyChange() {
-  //   this.baseCurrencyValue = this.currencyValue / this.dataService.getConvertedValue(this.baseCurrencyValue, this.getConvertedCurrencyRate());
-  // }
+    return this.apiResult[this.selectedInitialCurrency][this.resultCurrency];
+  }
 }
